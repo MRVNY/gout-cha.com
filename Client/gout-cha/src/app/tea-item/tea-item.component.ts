@@ -23,6 +23,6 @@ import { Component } from '@angular/core';
 
 export class TeaItemComponent {
   name: string = '普洱生茶';
-  image: string = '/assets/images/生茶.jpg';
+  image: string = 'assets/images/生茶.jpg';
   description: string = 'De plus en plus emblématiques des amateurs de thé, les thés Pu\'er sont encore source de nombreux mystères.';
 }
