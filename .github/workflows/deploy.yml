@@ -32,14 +32,20 @@ jobs:
   
     - name: Use Node.js
       uses: actions/setup-node@v3
+
+    - name: npm install -g @angular/cli
+      run: npm install -g @angular/cli
+      working-directory: ./Client/gout-cha
   
     - name: npm install
       run: npm install
-      working-directory: ./Client/gout-cha  # Inherited from previous step
+      working-directory: ./Client/gout-cha
   
     - name: ng build
       run: ng build
-      working-directory: ./Client/gout-cha  # Inherited from previous step
+      working-directory: ./Client/gout-cha
+
+
   
     - name: Setup Pages
       uses: actions/configure-pages@v5
