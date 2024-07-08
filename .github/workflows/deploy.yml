@@ -1,27 +1,59 @@
 name: Build and Deploy
+
 on:
   # push:
   #   branches:
   #     - main
   workflow_dispatch:
+  
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
 
 jobs:
   build:
-
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - name: All things angular
-      uses: AhsanAyaz/angular-deploy-gh-pages-actions@v1.4.0 ## replace by latest version without it you will see Expected format {org}/{repo}[/path]@ref. Actual 'AhsanAyaz/angular-deploy-gh-pages-actions',Input string was not in a correct format.
-      with:
-        # Github access token token used to deploy on gh_pages. You can find it on Github.
-        github_access_token: ${{ secrets.GITHUB_TOKEN }} # see the Configuration section for how you can create secrets
-        # The directory of the angular project, in which all the commands will run
-        angular_project_dir: ./Client/gout-cha
-        # Build configuration for the angular app
     
-permissions:
-  contents: write # Allow write permission to GITHUB_TOKEN to commit to deploy branch.
+    - uses: actions/checkout@v4
+    - name: Use Node.js 16.x
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16.x
+        cache: 'npm'
+    - working-directory: ./Client/gout-cha
+    - run: npm install
+    - run: ng build
+
+    - name: Checkout
+      uses: actions/checkout@v4
+      
+    - name: Setup Pages
+      uses: actions/configure-pages@v5
+      
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: './dist/gout-cha/browser/'
+        
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4
+
+
+
 
           
