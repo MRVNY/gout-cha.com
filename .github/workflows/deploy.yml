@@ -8,10 +8,8 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    
     steps:
-    - name: cd
-      run: cd Client/gout-cha
-      
     - name: Checkout
       uses: actions/checkout@v2
 
@@ -22,12 +20,15 @@ jobs:
 
     - name: Install dependencies
       run: npm install
+      working-directory: ./Client/gout-chat
 
     - name: Run tests
       run: npm run test:headless
+      working-directory: ./Client/gout-chat
 
     - name: Build
       run: npm run build:prod
+      working-directory: ./Client/gout-chat
 
     - name: Deploy
       if: success()
@@ -36,3 +37,4 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: dist/angular-github-actions
         enable_jekyll: true
+        working-directory: ./Client/gout-chat
