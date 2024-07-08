@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "dgSpecHash": "FzsyfUG/+BhzSSdPMKQOnf0/AruSRxzjVMZQXbdwNREavTzL+736C4JKN7zvj0XW6LBwnL/MbplthhwwNYlelQ==",
+  "success": true,
+  "projectFilePath": "/Users/Marvin/RiderProjects/20486D-DevelopingASPNETMVCWebApplications/Allfiles/Mod01/Labfiles/01_ActorsRazorPages_begin/gout-cha.com/Server/Server.csproj",
+  "expectedPackageFiles": [
+    "/Users/Marvin/.nuget/packages/microsoft.aspnetcore.openapi/8.0.1/microsoft.aspnetcore.openapi.8.0.1.nupkg.sha512",
+    "/Users/Marvin/.nuget/packages/microsoft.extensions.apidescription.server/6.0.5/microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
+    "/Users/Marvin/.nuget/packages/microsoft.openapi/1.4.3/microsoft.openapi.1.4.3.nupkg.sha512",
+    "/Users/Marvin/.nuget/packages/swashbuckle.aspnetcore/6.4.0/swashbuckle.aspnetcore.6.4.0.nupkg.sha512",
+    "/Users/Marvin/.nuget/packages/swashbuckle.aspnetcore.swagger/6.4.0/swashbuckle.aspnetcore.swagger.6.4.0.nupkg.sha512",
+    "/Users/Marvin/.nuget/packages/swashbuckle.aspnetcore.swaggergen/6.4.0/swashbuckle.aspnetcore.swaggergen.6.4.0.nupkg.sha512",
+    "/Users/Marvin/.nuget/packages/swashbuckle.aspnetcore.swaggerui/6.4.0/swashbuckle.aspnetcore.swaggerui.6.4.0.nupkg.sha512"
+  ],
+  "logs": []
+}
