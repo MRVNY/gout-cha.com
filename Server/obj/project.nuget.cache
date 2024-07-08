@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "FzsyfUG/+BhzSSdPMKQOnf0/AruSRxzjVMZQXbdwNREavTzL+736C4JKN7zvj0XW6LBwnL/MbplthhwwNYlelQ==",
+  "dgSpecHash": "zrOh5+2xI6aL3jgGkSicVAJVsSy77ddt7c1x5V/S5OCzCZ3D7g7pKl8RdnN7uKC9tMUbu6AUL7G50af9jUmKDw==",
   "success": true,
-  "projectFilePath": "/Users/Marvin/RiderProjects/20486D-DevelopingASPNETMVCWebApplications/Allfiles/Mod01/Labfiles/01_ActorsRazorPages_begin/gout-cha.com/Server/Server.csproj",
+  "projectFilePath": "/Users/Marvin/RiderProjects/gout-cha/Server/Server.csproj",
   "expectedPackageFiles": [
     "/Users/Marvin/.nuget/packages/microsoft.aspnetcore.openapi/8.0.1/microsoft.aspnetcore.openapi.8.0.1.nupkg.sha512",
     "/Users/Marvin/.nuget/packages/microsoft.extensions.apidescription.server/6.0.5/microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",

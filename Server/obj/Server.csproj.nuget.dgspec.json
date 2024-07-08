@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/Marvin/RiderProjects/20486D-DevelopingASPNETMVCWebApplications/Allfiles/Mod01/Labfiles/01_ActorsRazorPages_begin/gout-cha.com/Server/Server.csproj": {}
+    "/Users/Marvin/RiderProjects/gout-cha/Server/Server.csproj": {}
   },
   "projects": {
-    "/Users/Marvin/RiderProjects/20486D-DevelopingASPNETMVCWebApplications/Allfiles/Mod01/Labfiles/01_ActorsRazorPages_begin/gout-cha.com/Server/Server.csproj": {
+    "/Users/Marvin/RiderProjects/gout-cha/Server/Server.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/Marvin/RiderProjects/20486D-DevelopingASPNETMVCWebApplications/Allfiles/Mod01/Labfiles/01_ActorsRazorPages_begin/gout-cha.com/Server/Server.csproj",
+        "projectUniqueName": "/Users/Marvin/RiderProjects/gout-cha/Server/Server.csproj",
         "projectName": "Server",
-        "projectPath": "/Users/Marvin/RiderProjects/20486D-DevelopingASPNETMVCWebApplications/Allfiles/Mod01/Labfiles/01_ActorsRazorPages_begin/gout-cha.com/Server/Server.csproj",
+        "projectPath": "/Users/Marvin/RiderProjects/gout-cha/Server/Server.csproj",
         "packagesPath": "/Users/Marvin/.nuget/packages/",
-        "outputPath": "/Users/Marvin/RiderProjects/20486D-DevelopingASPNETMVCWebApplications/Allfiles/Mod01/Labfiles/01_ActorsRazorPages_begin/gout-cha.com/Server/obj/",
+        "outputPath": "/Users/Marvin/RiderProjects/gout-cha/Server/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/Marvin/.nuget/NuGet/NuGet.Config"
