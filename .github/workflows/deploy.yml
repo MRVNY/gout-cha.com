@@ -29,14 +29,19 @@ jobs:
     steps:
     
     - uses: actions/checkout@v4
+    
     - name: Use Node.js 16.x
       uses: actions/setup-node@v3
       with:
         node-version: 16.x
         cache: 'npm'
     - working-directory: ./Client/gout-cha
+    
     - run: npm install
+    - working-directory: ./Client/gout-cha
+    
     - run: ng build
+    - working-directory: ./Client/gout-cha
 
     - name: Checkout
       uses: actions/checkout@v4
