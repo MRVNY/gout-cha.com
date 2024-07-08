@@ -35,7 +35,6 @@ jobs:
       with:
         node-version: 16.x
         cache: 'npm'
-        working-directory: ./Client/gout-cha  # This line sets the working directory
   
     - name: npm install
       run: npm install
