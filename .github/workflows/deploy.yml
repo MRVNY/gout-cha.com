@@ -1,0 +1,27 @@
+name: Build and Deploy
+on:
+  # push:
+  #   branches:
+  #     - main
+  workflow_dispatch:
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: All things angular
+      uses: AhsanAyaz/angular-deploy-gh-pages-actions@v1.4.0 ## replace by latest version without it you will see Expected format {org}/{repo}[/path]@ref. Actual 'AhsanAyaz/angular-deploy-gh-pages-actions',Input string was not in a correct format.
+      with:
+        # Github access token token used to deploy on gh_pages. You can find it on Github.
+        github_access_token: ${{ secrets.GITHUB_TOKEN }} # see the Configuration section for how you can create secrets
+        # The directory of the angular project, in which all the commands will run
+        angular_project_dir: ./Client/gout-cha
+        # Build configuration for the angular app
+    
+permissions:
+  contents: write # Allow write permission to GITHUB_TOKEN to commit to deploy branch.
+
+          
