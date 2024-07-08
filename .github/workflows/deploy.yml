@@ -55,7 +55,7 @@ jobs:
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v3
       with:
-        path: ./Client/gout-cha/dist/gout-cha
+        path: ./Client/gout-cha/dist/gout-cha/browser
   
     - name: Deploy to GitHub Pages
       id: deployment
