@@ -26,40 +26,33 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
 
-    steps:
-    
+    steps: 
     - name: Checkout
       uses: actions/checkout@v4
-    
+  
     - name: Use Node.js 16.x
       uses: actions/setup-node@v3
       with:
         node-version: 16.x
         cache: 'npm'
-        working-directory: ./Client/gout-cha
-    - working-directory: ./Client/gout-cha
-
+        working-directory: ./Client/gout-cha  # This line sets the working directory
+  
     - name: npm install
       run: npm install
-      working-directory: ./Client/gout-cha
-
+      working-directory: ./Client/gout-cha  # Inherited from previous step
+  
     - name: ng build
       run: ng build
-      working-directory: ./Client/gout-cha
-      
+      working-directory: ./Client/gout-cha  # Inherited from previous step
+  
     - name: Setup Pages
       uses: actions/configure-pages@v5
-      
+  
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v3
       with:
         path: './dist/gout-cha/browser/'
-        
+  
     - name: Deploy to GitHub Pages
       id: deployment
       uses: actions/deploy-pages@v4
-
-
-
-
-          
