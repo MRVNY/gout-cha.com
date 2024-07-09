@@ -24,7 +24,7 @@
               "src/favicon.ico",
               "src/assets",
               {
-                "glob": "src/assets/**",
+                "glob": "**/*",
                 "output": "assets/",
                 "input": "public"
               }
@@ -85,7 +85,7 @@
               "src/favicon.ico",
               "src/assets",
               {
-                "glob": "src/assets/**",
+                "glob": "**/*",
                 "output": "assets/",
                 "input": "public"
               }
