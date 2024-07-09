@@ -32,7 +32,7 @@ public class DBController
             using SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
             {
-                //get everything
+                //to json
                 for (int i = 0; i < reader.FieldCount; i++)
                 {
                     result += reader.GetValue(i).ToString() + " | ";
@@ -43,7 +43,7 @@ public class DBController
         {
             Console.WriteLine(e.ToString());
         }
-        
-        return result;
+        //{"result": result}
+        return $"{{\"result\": \"{result}\"}}";
     }
 }
