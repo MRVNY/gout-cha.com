@@ -1,3 +1,5 @@
+using gout_cha.com;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -35,6 +37,13 @@ app.MapGet("/weatherforecast", () =>
     })
     .WithName("GetWeatherForecast")
     .WithOpenApi();
+
+//get tea by id
+app.MapGet("/getTea", (string id) =>
+{
+    TeaController teaController = new TeaController();
+    return teaController.GetTea(id);
+});
 
 app.Run();
 

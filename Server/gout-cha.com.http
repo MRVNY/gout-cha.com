@@ -3,7 +3,9 @@
 GET {{gout_cha.com_HostAddress}}/weatherforecast/
 Accept: application/json
 
-GET {{gout_cha.com_HostAddress}}/getTea
+###
+GET{{gout_cha.com_HostAddress}}/getTea/
 Accept: application/json
 
 ###
+
