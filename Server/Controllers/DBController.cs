@@ -1,16 +1,18 @@
+using System.Collections;
 using Microsoft.Data.SqlClient;
 
 namespace gout_cha.com;
 
-public class DBController
+public static class DBController
 {
-    private SqlConnectionStringBuilder _builder = new SqlConnectionStringBuilder(); 
-    public DBController()
+    private static SqlConnectionStringBuilder _builder = new SqlConnectionStringBuilder();
+
+    static DBController()
     {
         ConnectToDB();
     }
 
-    private void ConnectToDB()
+    private static void ConnectToDB()
     {
         _builder = new SqlConnectionStringBuilder();
 
@@ -20,9 +22,9 @@ public class DBController
         _builder.InitialCatalog = "gou-database";
     }
 
-    public string MakeQuery(string query)
+    public static List<Hashtable> MakeQuery(string query)
     {
-        string result = "";
+        List<Hashtable> result = new List<Hashtable>();
         try
         {
             using SqlConnection connection = new SqlConnection(_builder.ConnectionString);
@@ -32,18 +34,18 @@ public class DBController
             using SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
             {
-                //to json
+                Hashtable row = new Hashtable();
                 for (int i = 0; i < reader.FieldCount; i++)
                 {
-                    result += reader.GetValue(i).ToString() + " | ";
+                    row.Add(reader.GetName(i), reader.GetValue(i));
                 }
+                result.Add(row);
             }
         }
         catch (SqlException e)
         {
             Console.WriteLine(e.ToString());
         }
-        //{"result": result}
-        return $"{{\"result\": \"{result}\"}}";
+        return result;
     }
 }

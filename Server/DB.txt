@@ -1,0 +1,71 @@
+-- CREATE TABLE Tea (
+--                      Id INT PRIMARY KEY IDENTITY(1,1),
+--                      Name NVARCHAR(100) NOT NULL,
+--                      Type NVARCHAR(50) NOT NULL,
+--                      Origin NVARCHAR(100),
+--                      Description TEXT,
+--                      Price DECIMAL(10, 2) NOT NULL
+-- );
+
+-- INSERT INTO Tea (Name, Type, Origin, Description, Price) VALUES ('Green Tea', 'Green', 'China', 'A delicate tea made from unoxidized leaves.', 3.99);
+-- INSERT INTO Tea (Name, Type, Origin, Description, Price) VALUES ('Black Tea', 'Black', 'India', 'A strong tea made from fully oxidized leaves.', 2.99);
+-- INSERT INTO Tea (Name, Type, Origin, Description, Price) VALUES ('Oolong Tea', 'Oolong', 'Taiwan', 'A tea made from partially oxidized leaves.', 4.99);
+-- INSERT INTO Tea (Name, Type, Origin, Description, Price) VALUES ('White Tea', 'White', 'China', 'A subtle tea made from young leaves.', 5.99);
+-- INSERT INTO Tea (Name, Type, Origin, Description, Price) VALUES ('Herbal Tea', 'Herbal', NULL, 'A tea made from herbs, flowers, and fruits.', 6.99);
+
+-- SELECT * FROM Tea WHERE id = 1;
+
+
+
+-- 
+-- DROP TABLE IF EXISTS Tea;
+-- CREATE TABLE Tea (
+--      Id INT PRIMARY KEY IDENTITY(1,1),
+--      Name NVARCHAR(100) NOT NULL,
+--      Type NVARCHAR(50) NOT NULL,
+--      Origin NVARCHAR(100),
+--      Description TEXT,
+--      Price DECIMAL(10, 2) NOT NULL
+-- );
+-- 
+-- -- Photo :
+-- -- - IdPhoto
+-- -- - Image (binaire)
+-- 
+-- CREATE TABLE Photo (
+--     Id INT PRIMARY KEY IDENTITY(1,1),
+--     IdTea INT FOREIGN KEY REFERENCES Tea(Id),
+--     Image VARBINARY(MAX) NOT NULL
+-- );
+-- 
+-- 
+-- CREATE TABLE Sale (
+--      Id INT PRIMARY KEY IDENTITY(1,1),
+--      TeaId INT FOREIGN KEY REFERENCES Tea(Id),
+--      Quantity INT NOT NULL,
+--      TotalPrice DECIMAL(10, 2) NOT NULL
+-- );
+-- 
+-- CREATE TABLE Client (
+--      Id INT PRIMARY KEY IDENTITY(1,1),
+--      FirstName NVARCHAR(50) NOT NULL,
+--      LastName NVARCHAR(50) NOT NULL,
+--      Email NVARCHAR(100) NOT NULL,
+--      Phone NVARCHAR(20) NOT NULL
+-- );
+-- 
+-- CREATE TABLE Order (
+--      Id INT PRIMARY KEY IDENTITY(1,1),
+--      ClientId INT FOREIGN KEY REFERENCES Client(Id),
+--      SaleId INT FOREIGN KEY REFERENCES Sale(Id),
+--      Date DATE NOT NULL
+-- );
+-- 
+-- CREATE TABLE Comment (
+--      Id INT PRIMARY KEY IDENTITY(1,1),
+--      TeaId INT FOREIGN KEY REFERENCES Tea(Id),
+--      ClientId INT FOREIGN KEY REFERENCES Client(Id),
+--      Comment TEXT NOT NULL
+-- );
+
+

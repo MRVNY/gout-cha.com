@@ -1,13 +1,11 @@
-import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-tea-item',
   standalone: true,
-  imports: [],
   template: `
     <div>
-      <div class="relative justify-center cursor-pointer group" (click)="callAPI('1')" >
+      <div class="relative justify-center cursor-pointer group">
         <img [src]="image" alt="{{ name }}" class="w-full h-full">
 
         <div class="absolute inset-0 justify-center items-center flex">
@@ -22,19 +20,30 @@ import { Component } from '@angular/core';
   styleUrl: './tea-item.component.css'
 })
 
-export class TeaItemComponent {
+export class TeaItemComponent implements OnInit{
+  @Input() tea: any;
 
-  name: string = '普洱生茶';
-  image: string = 'assets/images/生茶.jpg';
-  description: string = 'De plus en plus emblématiques des amateurs de thé, les thés Pu\'er sont encore source de nombreux mystères.';
+  name: string = '';
+  image: string = '';
+  description: string = '';
 
-  constructor(private http: HttpClient) {}
+  constructor() {}
 
-  callAPI(arg0: string) {
-    // http https://gout-cha.azurewebsites.net/getTea?id='+arg0
-    this.http.get('https://gout-cha.azurewebsites.net/getTea?id='+arg0).subscribe((data) => {
-      console.log(data);
-      alert((data as any)['result']);
-    });
+  ngOnInit() {
+    // console.log(this.tea);
+    this.name = this.tea.Name;
+    this.image = this.getImageUrl();
+    this.description = this.tea.Description;
+  }
+
+  getImageUrl(): string {
+    const base64String = this.tea.Images[0];
+    let imageUrl = '';
+    if(base64String != null) {
+      const imageBytes = new Uint8Array(atob(base64String).split('').map(char => char.charCodeAt(0)));
+      const blob = new Blob([imageBytes], {type: 'image/jpg'});
+      imageUrl = URL.createObjectURL(blob);
+    }
+    return imageUrl
   }
 }
