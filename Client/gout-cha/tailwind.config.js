@@ -15,6 +15,10 @@ module.exports = {
         "desc/3": "1.666vw",
         "desc/4": "1.25vw",
       },
+      colors: {
+        c1d1d1b: "#1d1d1b",
+        background: "#FCFAF6",
+      }
     },
   },
   plugins: [],

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavBarComponent } from './Components/nav-bar/nav-bar.component';
+import { FooterComponent } from './Components/footer/footer.component';
 import { TeaGalleryComponent } from "./Components/tea-gallery/tea-gallery.component";
 import { AdminAddPhotoComponent } from './Components/admin-add-photo/admin-add-photo.component';
 
@@ -9,12 +10,15 @@ import { AdminAddPhotoComponent } from './Components/admin-add-photo/admin-add-p
     standalone: true,
     //   templateUrl: './app.component.html',
     template: `
-    <app-nav-bar/>
-    <app-tea-gallery/>
-    <app-admin-add-photo/>
+    <div class="min-h-screen flex flex-col justify-between">
+      <div> 
+        <app-nav-bar/>
+        <router-outlet></router-outlet>
+      </div>
+      <app-footer/>
+    </div>
     `,
-    styleUrl: './app.component.css',
-    imports: [RouterOutlet, NavBarComponent, TeaGalleryComponent, AdminAddPhotoComponent]
+    imports: [RouterOutlet, NavBarComponent, TeaGalleryComponent, AdminAddPhotoComponent, FooterComponent]
 })
 export class AppComponent {
   title = 'gout-cha';

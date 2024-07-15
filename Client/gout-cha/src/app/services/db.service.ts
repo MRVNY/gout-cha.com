@@ -10,12 +10,11 @@ export class DbService {
   myurl : string = window.location.href;
   url : string = '';
 
-  // url = 'https://gout-cha.azurewebsites.net/';
-  // url = 'http://localhost:5281/';
-
   constructor(private http: HttpClient) {
-    if(this.myurl.includes('localhost')) this.url = 'http://localhost:5281/';
-    else this.url = 'https://gout-cha.azurewebsites.net/';
+      this.url = 'https://gout-cha.azurewebsites.net/';
+  //   url = 'http://localhost:5281/';
+  //   if(this.myurl.includes('localhost')) this.url = 'http://localhost:5281/';
+  //   else this.url = 'https://gout-cha.azurewebsites.net/';
   }
 
 
@@ -31,22 +30,10 @@ export class DbService {
   }
 
   addPhoto(idProduct: string, base64String: string) {
-    console.log(idProduct);
-    const headers = new HttpHeaders().set('Content-Type', 'application/json');
-    const body = { image: base64String };
-
-    // this.http.post(this.url + 'admin/addPhoto?idProduct='+idProduct, body, { headers }).subscribe((data) => {
-    //   console.log(data);
-    // });
-
     this.http.post(`${this.url}admin/addPhoto`, { idProduct, image: base64String }, {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     }).subscribe((data) => {
       console.log(data);
     });
-    // console.log(base64String);
-    // this.http.post(this.url + 'admin/addPhoto?idProduct='+idProduct+'&image='+base64String, null).subscribe((data) => {
-    //   console.log(data);
-    // });
   }
 }

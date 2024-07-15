@@ -1,23 +1,50 @@
-import { Component, ElementRef, input, ViewChild } from '@angular/core';
-import { DbService } from '../../services/db.service';
+import { Component, ElementRef, input, OnInit, ViewChild } from '@angular/core';
+import { DbService } from '../../Services/db.service';
+import { CommonModule, NgFor } from '@angular/common';
+import { TeaGalleryComponent } from '../tea-gallery/tea-gallery.component';
 
 @Component({
   selector: 'app-admin-add-photo',
   standalone: true,
-  imports: [],
+  imports: [CommonModule, NgFor],
   template: `
     <p>
-      <input type="text" placeholder="idProduct" #idProductInput>
+      <!-- <input type="text" placeholder="idProduct" #idProductInput> -->
+
+      <!-- dropdown -->
+      <select>
+        <option 
+        #idProductInput
+        *ngFor="let product of products" 
+        value="{{ product.Id }}">
+        {{ product.Name }}
+      </option>
+   
+      </select>
+      
+      
       <input type="file" accept="image/*" (change)="onFileSelected($event)">
       <!-- <button (change)="onFileSelected($event)">Upload</button> -->
     </p>
   `,
-  styleUrl: './admin-add-photo.component.css'
 })
-export class AdminAddPhotoComponent {
+export class AdminAddPhotoComponent implements OnInit{
   @ViewChild('idProductInput') idProductInput!: ElementRef;
+  products: any;
 
   constructor(private DbService: DbService) {}
+  ngOnInit(): void {
+    let observable = this.DbService.getAllTea();
+    observable.subscribe({
+      next: (data) => {
+        this.products = data.result;
+      },
+      error: (error) => {
+        console.error('There was an error!', error);
+      }
+    });
+  }
+
 
   onFileSelected($event: Event) {
     if ($event.target instanceof HTMLInputElement) {
