@@ -3,3 +3,32 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+a:hover {
+  color: rgb(232, 162, 33);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* a {
+  user-select: none;
+} */
+
+button {
+  border-radius: 0.25rem;
+  border-color: black;
+  border-width: 2px;
+  border-style: solid;
+}
+
+button:hover {
+  background-color: rgb(232, 162, 33);
+  color: white;
+  cursor: pointer;
+}
+
+body {
+  font-family: "Roboto", "Ma Shan Zheng", sans-serif;
+  user-select: none;
+  cursor: default;
+}

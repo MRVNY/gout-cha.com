@@ -3,7 +3,7 @@ module.exports = {
   content: [
     "./src/**/*.{html,ts}"
   ],
-  theme: {
+  theme: {      
     extend: {
       fontSize: {
         "cha": "10vw",
@@ -18,6 +18,8 @@ module.exports = {
       colors: {
         c1d1d1b: "#1d1d1b",
         background: "#FCFAF6",
+        navbar: "#727981",
+        uiyellow: "rgb(232, 162, 33)"
       }
     },
   },

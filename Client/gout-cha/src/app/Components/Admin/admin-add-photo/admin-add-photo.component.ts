@@ -1,12 +1,12 @@
 import { Component, ElementRef, input, OnInit, ViewChild } from '@angular/core';
-import { DbService } from '../../Services/db.service';
-import { CommonModule, NgFor } from '@angular/common';
-import { TeaGalleryComponent } from '../tea-gallery/tea-gallery.component';
+import { DbService } from '../../../Services/db.service';
+import { CommonModule } from '@angular/common';
+import { TeaGalleryComponent } from '../../tea-gallery/tea-gallery.component';
 
 @Component({
   selector: 'app-admin-add-photo',
   standalone: true,
-  imports: [CommonModule, NgFor],
+  imports: [CommonModule],
   template: `
     <p>
       <!-- <input type="text" placeholder="idProduct" #idProductInput> -->

@@ -1,5 +1,5 @@
-export interface Tea {
-    name: string;
-    image: string;
-    description: string;
+import { Product } from "./product";
+
+export interface Tea extends Product {
+    origin: string;
 }

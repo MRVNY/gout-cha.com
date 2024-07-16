@@ -3,7 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { NavBarComponent } from './Components/nav-bar/nav-bar.component';
 import { FooterComponent } from './Components/footer/footer.component';
 import { TeaGalleryComponent } from "./Components/tea-gallery/tea-gallery.component";
-import { AdminAddPhotoComponent } from './Components/admin-add-photo/admin-add-photo.component';
+import { AdminAddPhotoComponent } from './Components/Admin/admin-add-photo/admin-add-photo.component';
 
 @Component({
     selector: 'app-root',
@@ -12,10 +12,10 @@ import { AdminAddPhotoComponent } from './Components/admin-add-photo/admin-add-p
     template: `
     <div class="min-h-screen flex flex-col justify-between">
       <div> 
-        <app-nav-bar/>
+        <app-nav-bar class="capitalize"/>
         <router-outlet></router-outlet>
       </div>
-      <app-footer/>
+      <app-footer class="capitalize"/>
     </div>
     `,
     imports: [RouterOutlet, NavBarComponent, TeaGalleryComponent, AdminAddPhotoComponent, FooterComponent]
