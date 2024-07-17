@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { ReactiveFormsModule, FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { UserService } from '../../../Services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -8,7 +10,7 @@ import { ReactiveFormsModule, FormControl, FormGroup } from '@angular/forms';
   template: `
     <div class="flex flex-col justify-center items-center h-screen">
       <h1 class="text-5xl m-5">Register</h1>
-      <form [formGroup]="form" (submit)="onSubmit()" 
+      <form [formGroup]="form" (submit)="OnSubmit()" 
         class="flex flex-col space-y-3">
         <input type="text" formControlName="username" placeholder="Username">
         <input type="email" formControlName="email" placeholder="Email">
@@ -18,7 +20,9 @@ import { ReactiveFormsModule, FormControl, FormGroup } from '@angular/forms';
   styles: ``
 })
 export class RegisterComponent {
-  
+
+  constructor(private UserService: UserService, private router: Router) { }
+
     form: FormGroup = new FormGroup({
       username: new FormControl(''),
       password: new FormControl(''),
@@ -26,7 +30,17 @@ export class RegisterComponent {
     });
       
   
-    onSubmit() {
-      console.log(this.form.value);
+    OnSubmit() {
+      this.UserService.register(this.form.value.username, this.form.value.password, this.form.value.email).subscribe({
+        next: (data) => {
+          console.log(data);
+          //go to home page
+          this.router.navigate(['/login']);
+        },
+        error: (error) => {
+          alert('Invalid username or password');
+          console.log(error);
+        }
+      });
     }
 }

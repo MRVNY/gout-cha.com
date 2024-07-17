@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ReactiveFormsModule, FormControl, FormGroup } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { UserService } from '../../../Services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -22,13 +23,15 @@ import { RouterLink } from '@angular/router';
 })
 export class LoginComponent {
 
+  constructor(private UserService: UserService, private router: Router) {}
+
   form: FormGroup = new FormGroup({
     username: new FormControl(''),
     password: new FormControl('')
   });
 
   onSubmit() {
-    console.log(this.form.value);
+    this.UserService.login(this.form.value.username, this.form.value.password);
   }
 
 }

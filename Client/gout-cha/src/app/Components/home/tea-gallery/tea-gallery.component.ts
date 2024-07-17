@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { TeaItemComponent } from "../tea-item/tea-item.component";
-import { DbService } from '../../Services/db.service';
-import { UserService } from '../../Services/user.service';
+import { TeaItemComponent } from "./tea-item/tea-item.component";
+import { ProductService } from '../../../Services/product.service';
+import { UserService } from '../../../Services/user.service';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -10,8 +10,8 @@ import { CommonModule } from '@angular/common';
     template: `
       <h1 class="text-8xl text-center m-10">Tea Gallery</h1>
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-0">
-        <app-tea-item  
-          *ngFor="let tea of teas" 
+        <app-tea-item
+          *ngFor="let tea of teas"
           [tea]="tea"/>
 
         <app-tea-item *ngIf="this.UserService.role==='admin'"
@@ -22,11 +22,10 @@ import { CommonModule } from '@angular/common';
 })
 export class TeaGalleryComponent implements OnInit{
   teas: any;
-  constructor(private DbService: DbService, public UserService: UserService) {}
-  
+  constructor(private DbService: ProductService, public UserService: UserService) {}
+
   ngOnInit() {
-    let observable = this.DbService.getAllTea();
-    observable.subscribe({
+    this.DbService.getAllTea().subscribe({
       next: (data) => {
         this.teas = data.result;
       },

@@ -1,5 +1,5 @@
 using System.Collections;
-using System.Text.Json;
+using gout_cha.com.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace gout_cha.com;
@@ -9,14 +9,17 @@ namespace gout_cha.com;
 public class UserController : ControllerBase
 {
     [HttpPost("login")]
-    public IActionResult Login(string username, string password)
+    public IActionResult Login([FromBody] LoginData body)
     {
-        List<Hashtable> result = DBController.MakeQuery($"SELECT IdUser, Email , Role FROM Usr WHERE Username = '{username}' AND Password = '{password}'");
+        string username = body.Username;
+        string password = body.Password;
+        
+        List<Hashtable> result = DBController.MakeQuery($"SELECT IdUser, Username, Email , Role FROM Usr WHERE Username = '{username}' AND Password = '{password}'");
         if (result.Count != 1)
         {
             return Unauthorized(new { message = "Login failed" });
         }
-        return Ok(new { message = "Login successful", result = result});
+        return Ok(new { message = "Login successful", result = result[0]});
     }
 
     [HttpPost("logout")]
@@ -28,8 +31,13 @@ public class UserController : ControllerBase
     }
 
     [HttpPost("register")]
-    public IActionResult Register(string username, string email, string password, string role)
+    public IActionResult Register([FromBody] User body)
     {
+        string username = body.Username;
+        string email = body.Email;
+        string password = body.Password;
+        string role = "user";
+        
         try
         {
             List<Hashtable> result = DBController.MakeQuery($"INSERT INTO Usr (Username, Email, Password, Role) VALUES ('{username}', '{email}', '{password}', '{role}')");
@@ -54,5 +62,11 @@ public class UserController : ControllerBase
         {
             return BadRequest(new { message = "Deregistration failed", error = ex.Message });
         }
+    }
+    
+    public class LoginData
+    {
+        public string Username { get; set; }
+        public string Password { get; set; }
     }
 }

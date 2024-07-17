@@ -19,6 +19,8 @@ button {
   border-color: black;
   border-width: 2px;
   border-style: solid;
+  background-color: white;
+  color: black;
 }
 
 button:hover {

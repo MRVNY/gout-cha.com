@@ -1,7 +1,7 @@
 export interface ShoppingItem {
     // product : any;
-    productId: string;
+    IdProduct: number;
     productName: string;
     price: number;
-    quantity: number;
+    Quantity: number;
 }

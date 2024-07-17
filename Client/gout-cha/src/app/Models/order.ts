@@ -1,10 +1,9 @@
 import { ShoppingItem } from "./shopping-item";
-
 export interface Order {
-    id: string;
-    userId: string;
-    items: ShoppingItem[];
-    total: number;
-    status: string;
-    date: string;
+    IdOrder: number;
+    IdUser: number;
+    TotalPrice: number;
+    Status: string;
+    Date: Date;
+    Products: ShoppingItem[];
 }

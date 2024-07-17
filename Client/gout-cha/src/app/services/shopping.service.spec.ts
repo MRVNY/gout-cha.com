@@ -1,6 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 
 import { ShoppingService } from './shopping.service';
+import { ShoppingItem } from '../Models/shopping-item';
 
 describe('ShoppingService', () => {
   let service: ShoppingService;
@@ -13,4 +14,5 @@ describe('ShoppingService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+
 });

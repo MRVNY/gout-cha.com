@@ -1,11 +1,8 @@
 using System.Collections;
-using System.Text;
-using System.Text.Json;
+using gout_cha.com.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace gout_cha.com;
-
-using Microsoft.Data.SqlClient;
 
 [Route("product")]
 [ApiController]
@@ -36,4 +33,6 @@ public class ProductController : ControllerBase
         }
         return Ok(new { message = "Get all tea successful", result });
     }
+    
+    
 }

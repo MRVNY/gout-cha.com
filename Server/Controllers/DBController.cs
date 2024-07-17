@@ -25,26 +25,19 @@ public static class DBController
     public static List<Hashtable> MakeQuery(string query)
     {
         List<Hashtable> result = new List<Hashtable>();
-        try
-        {
-            using SqlConnection connection = new SqlConnection(_builder.ConnectionString);
-            connection.Open();
+        using SqlConnection connection = new SqlConnection(_builder.ConnectionString);
+        connection.Open();
 
-            using SqlCommand command = new SqlCommand(query, connection);
-            using SqlDataReader reader = command.ExecuteReader();
-            while (reader.Read())
-            {
-                Hashtable row = new Hashtable();
-                for (int i = 0; i < reader.FieldCount; i++)
-                {
-                    row.Add(reader.GetName(i), reader.GetValue(i));
-                }
-                result.Add(row);
-            }
-        }
-        catch (SqlException e)
+        using SqlCommand command = new SqlCommand(query, connection);
+        using SqlDataReader reader = command.ExecuteReader();
+        while (reader.Read())
         {
-            Console.WriteLine(e.ToString());
+            Hashtable row = new Hashtable();
+            for (int i = 0; i < reader.FieldCount; i++)
+            {
+                row.Add(reader.GetName(i), reader.GetValue(i));
+            }
+            result.Add(row);
         }
         return result;
     }

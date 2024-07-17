@@ -1,7 +1,7 @@
 import { Component, ElementRef, input, OnInit, ViewChild } from '@angular/core';
-import { DbService } from '../../../Services/db.service';
+import { ProductService } from '../../../Services/product.service';
 import { CommonModule } from '@angular/common';
-import { TeaGalleryComponent } from '../../tea-gallery/tea-gallery.component';
+import { TeaGalleryComponent } from '../../home/tea-gallery/tea-gallery.component';
 
 @Component({
   selector: 'app-admin-add-photo',
@@ -13,16 +13,16 @@ import { TeaGalleryComponent } from '../../tea-gallery/tea-gallery.component';
 
       <!-- dropdown -->
       <select>
-        <option 
+        <option
         #idProductInput
-        *ngFor="let product of products" 
+        *ngFor="let product of products"
         value="{{ product.Id }}">
         {{ product.Name }}
       </option>
-   
+
       </select>
-      
-      
+
+
       <input type="file" accept="image/*" (change)="onFileSelected($event)">
       <!-- <button (change)="onFileSelected($event)">Upload</button> -->
     </p>
@@ -32,7 +32,7 @@ export class AdminAddPhotoComponent implements OnInit{
   @ViewChild('idProductInput') idProductInput!: ElementRef;
   products: any;
 
-  constructor(private DbService: DbService) {}
+  constructor(private DbService: ProductService) {}
   ngOnInit(): void {
     let observable = this.DbService.getAllTea();
     observable.subscribe({

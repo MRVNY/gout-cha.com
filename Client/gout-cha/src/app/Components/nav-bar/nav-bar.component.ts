@@ -24,14 +24,10 @@ import { UserService } from '../../Services/user.service';
                 (click)="setRole()">{{UserService.role==='user' ? 'ADMIN' : 'USER'}}</a>
               </li>
 
-              <li *ngIf="role === 'Admin'">
-                <a routerLink="/home" class="mx-10">Dashboard</a>
-                <a routerLink="/home" class="mx-10">About</a>
-              </li>
-
               <div class="flex space-x-5">
               <li><a routerLink="/cart">Cart</a></li>
-              <li><a routerLink="/login">Login</a></li>
+              <li *ngIf="UserService.currentUser===undefined"><a routerLink="/login">Login</a></li>
+              <li *ngIf="UserService.currentUser!==undefined"><a routerLink="/user">{{this.UserService.currentUser.Username}}</a></li>
               </div>
 
           </ul>
@@ -40,13 +36,13 @@ import { UserService } from '../../Services/user.service';
   `,
 })
 export class NavBarComponent implements OnInit{
-  // @ViewChild('pages') pages: ElementRef;
-  context: string = 'NavBar';
   role: string = 'User';
 
   constructor(public UserService: UserService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.UserService.currentUser);
+  }
 
 
   setRole() {
@@ -57,8 +53,4 @@ export class NavBarComponent implements OnInit{
       this.UserService.role = 'user';
     }
   } 
-
-  setContext(context: string) {
-    this.context = context;
-  }
 }

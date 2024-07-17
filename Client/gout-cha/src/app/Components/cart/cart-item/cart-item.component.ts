@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { ShoppingService } from '../../Services/shopping.service';
+import { ShoppingService } from '../../../Services/shopping.service';
 
 @Component({
   selector: 'app-cart-item',
@@ -8,7 +8,7 @@ import { ShoppingService } from '../../Services/shopping.service';
   template: `
     <div class="flex justify-between items-center border-2 border-black my-2 h-20">
       <div class="m-4">
-      <p>{{item.productName}} x{{item.quantity}}</p>
+      <p>{{item.productName}} x{{item.Quantity}}</p>
       <p>{{item.price}}</p>
       </div>
       <div class="h-full">
