@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TeaItemComponent } from "./tea-item/tea-item.component";
+import { TeaItemComponent } from './tea-item/tea-item.component';
 import { ProductService } from '@services/product.service';
 import { UserService } from '@services/user.service';
 import { CommonModule } from '@angular/common';
