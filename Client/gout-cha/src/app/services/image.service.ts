@@ -18,10 +18,10 @@ export class ImageService {
     return this.DbService.deleteQuery(`admin/deletePhoto?id=${idProduct}`);
   }
 
-  updatePhoto(idProduct: string, base64String: string) {
-    this.deletePhoto(idProduct);
-    this.addPhoto(idProduct, base64String);
-  }
+  // updatePhoto(idProduct: string, base64String: string) {
+  //   this.deletePhoto(idProduct);
+  //   this.addPhoto(idProduct, base64String);
+  // }
 
   fileToByte(file: File): Promise<string> {
     return new Promise((resolve, reject) => {
