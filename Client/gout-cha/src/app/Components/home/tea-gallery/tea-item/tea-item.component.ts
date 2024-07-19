@@ -26,7 +26,7 @@ import { TeaGalleryComponent } from '../tea-gallery.component';
           opacity-0 group-hover:opacity-80 transition-all" style="background-color: {{color}}">
           <div class="text-center cha">{{ tea.ChineseName }}</div>
           <div class="text-center desc">{{ tea.Name }}</div>
-          <div class="desc" [innerHTML]="tea.Description"></div>
+          <div class="desc" [innerHTML]="tea.Description.replace('\n', '<br>')"></div>
           <div class="desc">{{ tea.Price }}€/{{tea.Weight}}g</div>
           <div class="flex justify-center">
             <button class="w-1/3 mx-3 my-1" (click)="OnBuy()">Buy</button>
@@ -55,7 +55,7 @@ import { TeaGalleryComponent } from '../tea-gallery.component';
             <input type="text" formControlName="name" placeholder="Name"
               class="text-center desc">
             <!-- DESCRIPTION -->
-            <textarea formControlName="description" placeholder="Description"
+            <textarea formControlName="description" placeholder="Description."
               class="desc"></textarea>
             <!-- LINK -->
             <input type="text" formControlName="link" placeholder="Link to info"
@@ -69,13 +69,12 @@ import { TeaGalleryComponent } from '../tea-gallery.component';
                 <label class="w-full m-0">g</label>
               </div>
               <!-- COLOR -->
-              <div class="flex items-center content-center text-center p-0 desc h-full">
+              <div class="flex items-center content-center text-center p-0 desc h-full z-10">
                 <span [style.color]="this.color"
-                  [cpPosition]="'auto'"
-                  [cpPositionOffset]="'50%'"
+                  [cpPosition]="'top-left'"
                   [cpPositionRelativeToArrow]="true"
                   [(colorPicker)]="this.color"
-                  class="bg-black border-white border-2 px-1"><a class="text-white">COLOR</a></span>
+                  class="bg-black border-white border-2 px-1 z-10"><a class="text-white z-10">COLOR</a></span>
               </div>
             </div>
             <!-- IMAGE -->
