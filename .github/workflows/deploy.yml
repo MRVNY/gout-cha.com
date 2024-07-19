@@ -31,7 +31,7 @@ jobs:
       uses: actions/checkout@v4
   
     - name: Use Node.js
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v4
 
     - name: npm install -g @angular/cli
       run: npm install -g @angular/cli
@@ -42,10 +42,8 @@ jobs:
       working-directory: ./Client/gout-cha
   
     - name: ng build
-      run: ng build
+      run: ng build --configuration=production
       working-directory: ./Client/gout-cha
-
-
   
     - name: Setup Pages
       uses: actions/configure-pages@v5
