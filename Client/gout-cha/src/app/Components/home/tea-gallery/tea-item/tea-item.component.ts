@@ -171,7 +171,7 @@ export class TeaItemComponent implements OnInit{
             this.ImageService.deletePhoto(product.IdProduct.toString()).subscribe({
               next: () => {
                 this.ImageService.addPhoto(product.IdProduct.toString(), this.image).subscribe({
-                  next: () => { this.router.navigate([this.router.url]) }
+                  next: () => { this.Reload() }
                 });
               }
             });
