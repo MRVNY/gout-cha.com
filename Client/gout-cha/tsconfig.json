@@ -22,7 +22,13 @@
     "lib": [
       "ES2022",
       "dom"
-    ]
+    ],
+    "baseUrl": "./", // This sets the base directory for absolute paths
+    "paths": {
+      "@services/*": ["src/app/Services/*"],
+      "@models/*": ["src/app/Models/*"],
+      "@components/*": ["src/app/Components/*"],
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

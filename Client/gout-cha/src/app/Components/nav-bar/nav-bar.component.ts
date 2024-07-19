@@ -2,7 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 // import { NgIf } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import { UserService } from '../../Services/user.service';
+import { UserService } from '@services/user.service';
 
 
 

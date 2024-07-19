@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ChapterComponent } from '../chapter/chapter.component';
-import { Chapter } from '../../../Models/chapter';
+import { Chapter } from '@models/chapter';
 import { CommonModule } from '@angular/common';
 
 @Component({

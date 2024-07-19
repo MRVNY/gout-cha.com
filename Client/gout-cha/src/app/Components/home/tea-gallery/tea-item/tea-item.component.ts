@@ -1,13 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { UserService } from '../../../../Services/user.service';
+import { UserService } from '@services/user.service';
 import { ReactiveFormsModule, FormControl, FormGroup, Validator, Validators } from '@angular/forms';
-import { ShoppingService } from '../../../../Services/shopping.service';
+import { ShoppingService } from '@services/shopping.service';
 import { RouterLink } from '@angular/router';
 import { ColorPickerModule } from 'ngx-color-picker';
-import { Tea } from '../../../../Models/tea';
-import { ProductService } from '../../../../Services/product.service';
-import { ImageService } from '../../../../Services/image.service';
+import { ProductService } from '@services/product.service';
+import { ImageService } from '@services/image.service';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { TeaGalleryComponent } from '../tea-gallery.component';

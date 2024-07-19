@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Chapter } from '../../../Models/chapter';
-import { Img } from '../../../Models/img';
+import { Chapter } from '@models/chapter';
+import { Img } from '@models/img';
 import { CommonModule } from '@angular/common';
 
 @Component({

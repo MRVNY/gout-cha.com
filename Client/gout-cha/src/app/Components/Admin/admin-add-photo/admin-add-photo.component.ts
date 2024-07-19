@@ -1,8 +1,7 @@
 import { Component, ElementRef, input, OnInit, ViewChild } from '@angular/core';
-import { ProductService } from '../../../Services/product.service';
+import { ProductService } from '@services/product.service';
 import { CommonModule } from '@angular/common';
-import { TeaGalleryComponent } from '../../home/tea-gallery/tea-gallery.component';
-import { ImageService } from '../../../Services/image.service';
+import { ImageService } from '@services/image.service';
 
 @Component({
   selector: 'app-admin-add-photo',

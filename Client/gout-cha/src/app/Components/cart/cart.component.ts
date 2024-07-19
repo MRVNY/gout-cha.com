@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ShoppingService } from '../../Services/shopping.service';
+import { ShoppingService } from '@services/shopping.service';
 import { CommonModule } from '@angular/common';
 import { CartItemComponent } from "./cart-item/cart-item.component";
 
