@@ -1,7 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UserService } from '@services/user.service';
-import { ReactiveFormsModule, FormControl, FormGroup, Validator, Validators } from '@angular/forms';
+import { ReactiveFormsModule, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ShoppingService } from '@services/shopping.service';
 import { RouterLink } from '@angular/router';
 import { ColorPickerModule } from 'ngx-color-picker';
@@ -39,7 +39,7 @@ import { TeaGalleryComponent } from '../tea-gallery.component';
 
     <!-- ADMIN -->
     <div *ngIf="this.UserService.role === 'admin'" class="relative justify-center">
-      <img [src]="image" alt="Photo" class="w-full h-full aspect-square">
+      <img [src]="this.image" alt="Photo" class="w-full h-full aspect-square">
 
       <div class="absolute inset-0 justify-center items-center flex">
         <div class="h-4/5 w-4/5 p-1 opacity-80" style="background-color: {{color}} ;">
@@ -79,10 +79,11 @@ import { TeaGalleryComponent } from '../tea-gallery.component';
               </div>
             </div>
             <!-- IMAGE -->
-            <input type="file" accept="image/*" (change)="OnChoose($event)">
+            <input type="file" accept="image/*" (change)="OnChoose($event)" #imageInput>
 
             <button *ngIf="this.tea!==undefined" type="submit" class="w-1/3 mx-3 my-1 self-center">Submit</button>
             <button *ngIf="this.tea===undefined" type="submit" class="w-1/3 mx-3 my-1 self-center">Add</button>
+            <!-- <button type="button" (click)="Reload()" class="w-1/3 mx-3 my-1 self-center">Reload</button> -->
           </form>
         </div>
       </div>
@@ -93,6 +94,7 @@ import { TeaGalleryComponent } from '../tea-gallery.component';
 })
 
 export class TeaItemComponent implements OnInit{
+  @ViewChild('imageInput') imageInput!: ElementRef;
   @Input() tea: any;
   form!: FormGroup;
 
@@ -114,26 +116,15 @@ export class TeaItemComponent implements OnInit{
       this.image = this.tea.Images[0];
       this.color = this.tea.Color;
       // this.tea.Description = this.tea.Description.replace(/<br>/g, '\n');
-  
-      this.form = new FormGroup({
-        chinese: new FormControl(this.tea.ChineseName, Validators.required),
-        name: new FormControl(this.tea.Name, Validators.required),
-        description: new FormControl(this.tea.Description, Validators.required),
-        link: new FormControl(this.tea.Link, Validators.required),
-        price: new FormControl(this.tea.Price, Validators.required),
-        weight: new FormControl(this.tea.Weight, Validators.required),
-      });
     }
-    else {
-      this.form = new FormGroup({
-        chinese: new FormControl('', Validators.required),
-        name: new FormControl('', Validators.required),
-        description: new FormControl('', Validators.required),
-        link: new FormControl('', Validators.required),
-        price: new FormControl('', Validators.required),
-        weight: new FormControl('', Validators.required),
-      });
-    }
+    this.form = new FormGroup({
+      chinese: new FormControl(this.tea === undefined ? '' : this.tea.ChineseName, Validators.required),
+      name: new FormControl(this.tea === undefined ? '' : this.tea.Name, Validators.required),
+      description: new FormControl(this.tea === undefined ? '' : this.tea.Description, Validators.required),
+      price: new FormControl(this.tea === undefined ? '' : this.tea.Price, Validators.required),
+      link: new FormControl(this.tea === undefined ? '' : this.tea.Link, Validators.required),
+      weight: new FormControl(this.tea === undefined ? '' : this.tea.Weight, Validators.required),
+    });
   }
   
   async OnChoose($event: Event) {
@@ -169,7 +160,7 @@ export class TeaItemComponent implements OnInit{
       this.ProductService.addProduct(product).subscribe({
         next: (data) => {
           this.ImageService.addPhoto(data.result[0].IdProduct, this.image).subscribe({
-            next: () => {window.location.reload();}
+            next: () => {this.Reload()}
           });
         }
       });
@@ -181,17 +172,14 @@ export class TeaItemComponent implements OnInit{
             this.ImageService.deletePhoto(product.IdProduct.toString()).subscribe({
               next: () => {
                 this.ImageService.addPhoto(product.IdProduct.toString(), this.image).subscribe({
-                  next: () => { window.location.reload(); }
+                  next: () => { this.router.navigate([this.router.url]) }
                 });
               }
             });
           }
-          else { window.location.reload();}
+          else { this.Reload()}
         }
       });
-
-
-
     }
   }
 
@@ -210,7 +198,20 @@ export class TeaItemComponent implements OnInit{
 
   DeleteProduct() {
     this.ProductService.deleteProduct(this.tea.IdProduct).subscribe({
-      next: () => {window.location.reload();}
+      next: () => {this.Reload()}
     });
+  }
+
+  Reload() {
+    // this.location.go(this.location.path());
+    // this.router.navigate([this.router.url])
+    this.tea = undefined;
+    this.image = "assets/tea.jpg";
+    this.imageInput.nativeElement.files = null;
+    console.log(this.image);
+    this.color = '#808080';
+    this.form.reset();
+    this.ngOnInit();
+    this.TeaGalleryComponent.ngOnInit();
   }
 }

@@ -12,10 +12,10 @@ import { AdminAddPhotoComponent } from './Components/Admin/admin-add-photo/admin
     template: `
     <div class="min-h-screen flex flex-col justify-between">
       <div>
-        <app-nav-bar class="capitalize"/>
+        <app-nav-bar/>
         <router-outlet></router-outlet>
       </div>
-      <app-footer class="capitalize"/>
+      <app-footer/>
     </div>
     `,
     imports: [RouterOutlet, NavBarComponent, TeaGalleryComponent, AdminAddPhotoComponent, FooterComponent]

@@ -11,11 +11,12 @@ import { CommonModule } from '@angular/common';
       <h1 class="text-5xl text-center m-5">Tea Gallery</h1>
       
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-0">
-        <app-tea-item
+        <app-tea-item class="z-0"
           *ngFor="let tea of teas"
           [tea]="tea"/>
 
-        <app-tea-item *ngIf="this.UserService.role==='admin'"
+        <app-tea-item class="z-0"
+        *ngIf="this.UserService.role==='admin'"
           [tea]="undefined"/>
       </div>
   `,

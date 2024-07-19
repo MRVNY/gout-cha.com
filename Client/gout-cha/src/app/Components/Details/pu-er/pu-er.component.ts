@@ -131,11 +131,11 @@ export class PuErComponent {
       images: [
         {
           title: "Galettes de thé Pu'er cru vs cuit",
-          src: 'assets/images/11.jpg',
+          src: 'assets/images/熟vs生.jpg',
         },
         {
           title: "Infusion de thé Pu'er cru vs cuit",
-          src: 'assets/images/22.jpg',
+          src: 'assets/images/熟vs生汤.jpg',
         },
       ],
     },
