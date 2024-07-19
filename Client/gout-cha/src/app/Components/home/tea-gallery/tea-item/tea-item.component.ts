@@ -207,6 +207,7 @@ export class TeaItemComponent implements OnInit{
     this.tea = undefined;
     this.image = "assets/tea.jpg";
     this.imageInput.nativeElement.files = null;
+    this.imageInput.nativeElement.value = '';
     console.log(this.image);
     this.color = '#808080';
     this.form.reset();
