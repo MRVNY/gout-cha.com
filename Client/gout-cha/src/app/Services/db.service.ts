@@ -19,6 +19,7 @@ export class DbService {
         this.url = 'https://gout-cha.azurewebsites.net/';
       }
     });
+    // this.url = 'http://localhost:5281/';
   }
 
   getQuery(query: string) {

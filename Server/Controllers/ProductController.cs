@@ -8,12 +8,12 @@ namespace gout_cha.com;
 [ApiController]
 public class ProductController : ControllerBase
 {
-    [HttpGet("getProduct")]
-    public IActionResult GetProduct(string id)
+    [HttpGet("getProductById")]
+    public IActionResult GetProductById(string id)
     {
-        List<Hashtable> result = DBController.MakeQuery($"SELECT * FROM Product WHERE IdProduct = {id}");
+        List<Hashtable> result = DBController.MakeQuery($"SELECT IdProduct, Price, Name FROM Product WHERE IdProduct = {id}");
         //json serialize result
-        return Ok(new { message = "Get product successful", product = result });
+        return Ok(new { message = "Get product successful", result });
     }
     
     [HttpGet("getAllTea")]

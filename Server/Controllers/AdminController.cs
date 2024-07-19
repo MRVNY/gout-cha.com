@@ -98,9 +98,46 @@ public class AdminController : ControllerBase
         }
     }
     
+    [HttpDelete("deleteOrder")]
+    public IActionResult DeleteOrder(string id)
+    {
+        try
+        {
+            List<Hashtable> result = DBController.MakeQuery($"DELETE FROM ProductOrder WHERE IdOrder = {id}");
+            DBController.MakeQuery($"DELETE FROM [Order] WHERE IdOrder = {id}");
+            return Ok(new { message = "Delete order successful", result = result });
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(new { message = "Delete order failed", error = ex.Message });
+        }
+    }
+    
+    [HttpPut("updateOrderStatus")]
+    public IActionResult UpdateOrderStatus([FromBody] UpdateOrderStatusRequest body)
+    {
+        try
+        {
+            List<Hashtable> result = DBController.MakeQuery(
+                $"UPDATE [Order] SET Status = '{body.status}' " +
+                $"WHERE IdOrder = {body.idOrder}");
+            return Ok(new { message = "Update order status successful", result = result });
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(new { message = "Update order status failed", error = ex.Message });
+        }
+    }
+    
     public class AddPhotoRequest
     {
         public int idProduct { get; set; }
         public string image { get; set; }
     }
+}
+
+public class UpdateOrderStatusRequest
+{
+    public int idOrder { get; set; }
+    public string status { get; set; }
 }

@@ -10,11 +10,13 @@ import { AdminAddPhotoComponent } from './Components/Admin/admin-add-photo/admin
     standalone: true,
     //   templateUrl: './app.component.html',
     template: `
-    <div class="min-h-screen flex flex-col justify-between">
-      <div>
-        <app-nav-bar/>
+    <div class="min-h-screen flex flex-col">
+      <app-nav-bar/>
+
+      <div class="flex-grow flex flex-col justify-center">
         <router-outlet></router-outlet>
       </div>
+      
       <app-footer/>
     </div>
     `,

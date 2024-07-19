@@ -7,6 +7,7 @@ import { RegisterComponent } from './Components/Account/register/register.compon
 import { CartComponent } from './Components/cart/cart.component';
 import { HomeComponent } from './Components/home/home.component';
 import { ConstructionComponent } from './Components/construction/construction.component';
+import { UserComponent } from '@components/Account/user/user.component';
 
 export const routes: Routes = [
     {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -17,5 +18,6 @@ export const routes: Routes = [
     {path: 'register', component: RegisterComponent},
     {path: 'cart', component: CartComponent},
     {path: 'construction', component: ConstructionComponent},
-    {path: 'admin-add-photo', component: AdminAddPhotoComponent}
+    {path: 'admin-add-photo', component: AdminAddPhotoComponent},
+    {path: 'user', component: UserComponent}
 ];

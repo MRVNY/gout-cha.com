@@ -3,6 +3,7 @@ import { ShoppingItem } from '@models/shopping-item';
 import { DbService } from './db.service';
 import { UserService } from './user.service';
 import { Order } from '@models/order';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class ShoppingService {
   cart: ShoppingItem[] = [];
   total: number = 0.0;
 
-  constructor(private DbService: DbService, private UserService: UserService) { 
+  constructor(private DbService: DbService, private UserService: UserService, private CookieService: CookieService) { 
     this.loadCart();
   }
 
@@ -34,17 +35,20 @@ export class ShoppingService {
     this.total = this.cart.reduce((acc, item) => acc + item.price * item.Quantity, 0);
     // localStorage.setItem('cart', JSON.stringify(this.cart));
     // save to cookie
-    // console.log(this.cart);
-    document.cookie = `cart=${JSON.stringify(this.cart)};`;
+    this.CookieService.set('cart', JSON.stringify(this.cart));
+    // document.cookie = `cart=${JSON.stringify(this.cart)};`;
   }
 
   loadCart() {
     try{
-      this.cart = JSON.parse(document.cookie.split('=')[1] || '[]');
+      // this.cart = JSON.parse(document.cookie.split('=')[1] || '[]');
+      const tmp = this.CookieService.get('cart');
+      if (tmp !== undefined && tmp !== "undefined" && tmp !== '') {
+        this.cart = JSON.parse(tmp);
+      }
     } catch {
       this.cart = [];
     }
-
     this.saveCart();
   }
 

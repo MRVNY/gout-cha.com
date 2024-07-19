@@ -12,22 +12,29 @@ import { UserService } from '@services/user.service';
   imports: [CommonModule, RouterLink],
   template: `
       <nav class="fixed top-0 w-full backdrop-blur-md z-50" style="background-color: rgba(114, 131, 154, 0.8);">
-          <ul class="flex justify-between items-center text-lg px-5 py-3 text-white">
-              <li><a routerLink="/home">
+          <ul class="flex items-center text-lg px-5 py-3 text-white">
+              <li class="self-start w-1/4 flex">
+                <a routerLink="/home">
                 <img src='assets/images/LogoSansText.png' alt="Logo" class="h-10">
               </a></li>
 
-              <li *ngIf="role === 'User'">
-                <a routerLink="/home" class="mx-10">HOME</a>
-                <a routerLink="/home" class="mx-10">GALLERY</a>
-                <a class="mx-10"
-                (click)="setRole()">{{UserService.role==='user' ? 'ADMIN' : 'USER'}}</a>
+              <li class="w-1/2 flex justify-evenly">
+                <a routerLink="/home">HOME</a>
+                <a routerLink="/pu-er">PU'ER</a>
+                <a *ngIf="UserService.currentUser!==undefined && UserService.currentUser.Role==='admin'"
+                (click)="setRole()">{{UserService.role==='user' ? 'ADMIN VIEW' : 'USER VIEW'}}</a>
               </li>
 
-              <div class="flex space-x-5">
-              <li><a routerLink="/cart">Cart</a></li>
-              <li *ngIf="UserService.currentUser===undefined"><a routerLink="/login">Login</a></li>
-              <li *ngIf="UserService.currentUser!==undefined"><a routerLink="/user">{{this.UserService.currentUser.Username}}</a></li>
+              <div class="flex flex-row space-x-5 w-1/4 justify-end">
+              <li class="flex justify-center">
+                <a routerLink="/cart" class="material-icons">shopping_cart</a>
+              </li>
+              <li  class="flex justify-center" *ngIf="UserService.currentUser===undefined">
+                <a routerLink="/login" class="material-icons">login</a>
+              </li>
+              <li  class="flex justify-center" *ngIf="UserService.currentUser!==undefined">
+                <a routerLink="/user" class="material-icons">account_circle</a>
+              </li>
               </div>
 
           </ul>

@@ -11,16 +11,23 @@ public class OrderController : ControllerBase
     
     
     [HttpGet("getOrderByIdOrder")]
-    public IActionResult GetOrderByIdOrder(string idOrder)
+    public IActionResult GetOrderByIdOrder(string id)
     {
-        List<Hashtable> result = DBController.MakeQuery($"SELECT * FROM Order WHERE IdOrder = {idOrder}");
+        List<Hashtable> result = DBController.MakeQuery($"SELECT * FROM Order WHERE IdOrder = {id}");
         return Ok(new { message = "Get order by id order successful", result });
     }
     
-    [HttpGet("getOrderByIdUser")]
-    public IActionResult GetOrderByIdUser(string idUser)
+    [HttpGet("getOrdersByIdUser")]
+    public IActionResult GetOrderByIdUser(string id)
     {
-        List<Hashtable> result = DBController.MakeQuery($"SELECT * FROM Order WHERE IdUser = {idUser}");
+        List<Hashtable> result = DBController.MakeQuery($"SELECT * FROM [Order] WHERE IdUser = {id}");
+        
+        foreach (var order in result)
+        {
+            List<Hashtable> products = DBController.MakeQuery($"SELECT * FROM ProductOrder WHERE IdOrder = {order["IdOrder"]}");
+            order.Add("Products", products);
+        }
+        
         return Ok(new { message = "Get order by id user successful", result });
     }
     

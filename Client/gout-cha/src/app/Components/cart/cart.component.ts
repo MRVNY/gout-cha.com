@@ -17,7 +17,7 @@ import { CartItemComponent } from "./cart-item/cart-item.component";
         [item]="item" class="w-full"/>
 
       <div class="self-end text-end mt-8">
-        <p>Total: {{ShoppingService.total}}$</p>
+        <p>Total: {{ShoppingService.total}}€</p>
         <button (click)="ShoppingService.checkout()" class="p-1">Checkout</button>
       </div>
     </div>

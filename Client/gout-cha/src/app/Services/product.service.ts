@@ -12,6 +12,19 @@ export class ProductService {
     return this.DbService.getQuery('product/getAllTea');
   }
 
+  getProductById(idProduct: string): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.DbService.getQuery(`product/getProductById?id=${idProduct}`).subscribe({
+        next: (data) => {
+          resolve(data);
+        },
+        error: (error) => {
+          reject(error);
+        }
+      });
+    });
+  }
+
   addProduct(product: any): Observable<any> {
     return this.DbService.postQuery('admin/addProduct', product);
   }

@@ -3,22 +3,22 @@ import { DbService } from './db.service';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { User } from '@models/user';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
   currentUser: User | undefined;
-  role: string = 'admin';
-  constructor(private DbService: DbService, private router: Router) { 
-    // console.log(document.cookie);
+  role: string = 'user';
+  constructor(private DbService: DbService, private router: Router, private CookieService: CookieService) { 
     // //load from cookie
-    // const cookie = document.cookie.split(';').find(c => c.includes('currentUser'));
-    // if (cookie !== undefined) {
-    //   //parse json
-    //   this.currentUser = JSON.parse(cookie.split('=')[1]);
-    //   if(this.currentUser !== undefined) this.role = this.currentUser?.Role ?? 'user';
-    // }
+    // this.CookieService.deleteAll();
+    console.log(this.CookieService.getAll());
+    const tmp = this.CookieService.get('currentUser');
+    if (tmp !== undefined && tmp !== "undefined" && tmp !== ''){
+      this.currentUser = JSON.parse(tmp);
+    }
   }
 
   login(username: string, password: string){
@@ -32,20 +32,16 @@ export class UserService {
           Email: data.result.Email,
           Role: data.result.Role
         }
-        console.log(this.currentUser);
         this.router.navigate(['/home']);
+
+        this.CookieService.set('currentUser', JSON.stringify(this.currentUser));
+        console.log(this.CookieService.getAll());
       },
       error: (error) => {
         alert('Invalid username or password');
         console.log(error);
       }
     });
-
-    //add to cookie
-    // const tmp = document.cookie;
-    // tmp.concat(`currentUser=${JSON.stringify(this.currentUser)};`);
-    // document.cookie = tmp;
-
   }
 
   register(username: string, password: string, email: string): Observable<any> {
@@ -54,6 +50,8 @@ export class UserService {
 
   logout() {
     this.currentUser = undefined;
+    this.CookieService.delete('currentUser');
+    this.router.navigate(['/home']);
     this.role = 'user';
   }
 }

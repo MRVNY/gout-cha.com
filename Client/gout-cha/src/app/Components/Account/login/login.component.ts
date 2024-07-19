@@ -8,7 +8,7 @@ import { UserService } from '@services/user.service';
   standalone: true,
   imports: [ReactiveFormsModule, RouterLink],
   template: `
-    <div class="flex flex-col justify-center items-center h-screen">
+    <div class="flex flex-col justify-center items-center">
       <h1 class="text-5xl m-5">Login</h1>
       <form [formGroup]="form" (submit)="onSubmit()" 
         class="flex flex-col space-y-3">
