@@ -34,5 +34,4 @@ public class ProductController : ControllerBase
         return Ok(new { message = "Get all tea successful", result });
     }
     
-    
 }

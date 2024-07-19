@@ -24,7 +24,6 @@ export class UserService {
   login(username: string, password: string){
     this.DbService.postQuery('user/login', { username: username, password: password }).subscribe({
       next: (data:any) => {
-        console.log(data);
         //go to home page
         this.role = data.result.Role;
         this.currentUser = {

@@ -8,7 +8,8 @@ import { CommonModule } from '@angular/common';
     selector: 'app-tea-gallery',
     standalone: true,
     template: `
-      <h1 class="text-8xl text-center m-10">Tea Gallery</h1>
+      <h1 class="text-5xl text-center m-5">Tea Gallery</h1>
+      
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-0">
         <app-tea-item
           *ngFor="let tea of teas"
@@ -22,10 +23,10 @@ import { CommonModule } from '@angular/common';
 })
 export class TeaGalleryComponent implements OnInit{
   teas: any;
-  constructor(private DbService: ProductService, public UserService: UserService) {}
+  constructor(private ProductService: ProductService, public UserService: UserService) {}
 
   ngOnInit() {
-    this.DbService.getAllTea().subscribe({
+    this.ProductService.getAllTea().subscribe({
       next: (data) => {
         this.teas = data.result;
       },

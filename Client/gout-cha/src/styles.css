@@ -4,6 +4,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components{
+  .cha {
+    @apply text-cha sm:text-cha/2 md:text-cha/3 lg:text-cha/4
+  }
+  .desc {
+    @apply text-desc sm:text-desc/2 md:text-desc/3 lg:text-desc/4
+  }
+}
+
 a:hover {
   color: rgb(232, 162, 33);
   text-decoration: none;

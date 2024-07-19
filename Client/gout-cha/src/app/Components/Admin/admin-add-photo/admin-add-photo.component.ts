@@ -2,6 +2,7 @@ import { Component, ElementRef, input, OnInit, ViewChild } from '@angular/core';
 import { ProductService } from '../../../Services/product.service';
 import { CommonModule } from '@angular/common';
 import { TeaGalleryComponent } from '../../home/tea-gallery/tea-gallery.component';
+import { ImageService } from '../../../Services/image.service';
 
 @Component({
   selector: 'app-admin-add-photo',
@@ -16,7 +17,7 @@ import { TeaGalleryComponent } from '../../home/tea-gallery/tea-gallery.componen
         <option
         #idProductInput
         *ngFor="let product of products"
-        value="{{ product.Id }}">
+        value="{{ product.IdProduct }}">
         {{ product.Name }}
       </option>
 
@@ -32,7 +33,7 @@ export class AdminAddPhotoComponent implements OnInit{
   @ViewChild('idProductInput') idProductInput!: ElementRef;
   products: any;
 
-  constructor(private DbService: ProductService) {}
+  constructor(private DbService: ProductService, private ImageService: ImageService) {}
   ngOnInit(): void {
     let observable = this.DbService.getAllTea();
     observable.subscribe({
@@ -46,20 +47,13 @@ export class AdminAddPhotoComponent implements OnInit{
   }
 
 
-  onFileSelected($event: Event) {
+  async onFileSelected($event: Event) {
     if ($event.target instanceof HTMLInputElement) {
       const files = ($event.target as HTMLInputElement).files;
       if (files) {
-        Array.from(files)?.forEach(file => {
-          //to byte[]
-          const reader = new FileReader();
-          reader.readAsDataURL(file); // Read the file as Data URL (Base64)
-          reader.onload = () => {
-            const base64String = reader.result?.toString().split(',')[1];
-            // console.log(this.idProductInput.nativeElement.value);
-            this.DbService.addPhoto(this.idProductInput.nativeElement.value, base64String as string);
-        };
-        });
+        const byteString = await this.ImageService.fileToByte(files[0]);
+        // const id = this.products.find((product: any) => product.Name === this.idProductInput.nativeElement.
+        this.ImageService.addPhoto(this.idProductInput.nativeElement.value, byteString);
       }
     }
   }

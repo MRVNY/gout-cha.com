@@ -36,7 +36,7 @@ import { CommonModule } from '@angular/common';
                 <div class="pages_rot">
                   <div
                     class="pages_rot_icon"
-                    style="background:url(/assets/images/fondPuerSheng.jpg) no-repeat center center;background-size:cover;"
+                    style="background:url(assets/images/fondPuerSheng.jpg) no-repeat center center;background-size:cover;"
                   >
                     <a href="" target="_blank"></a>
                   </div>
@@ -52,7 +52,7 @@ import { CommonModule } from '@angular/common';
                 <div class="pages_rot">
                   <div
                     class="pages_rot_icon"
-                    style="background:url(/assets/images/fondPuerShu.jpg) no-repeat center center;background-size:cover;"
+                    style="background:url(assets/images/fondPuerShu.jpg) no-repeat center center;background-size:cover;"
                   >
                     <a href="" target="_blank"></a>
                   </div>
@@ -80,7 +80,7 @@ export class PuErComponent {
       images: [
         {
           title: "Galettes de thé Pu'er 普洱茶饼",
-          src: '/assets/images/puerchabing.jpg',
+          src: 'assets/images/puerchabing.jpg',
         },
       ],
     },
@@ -94,7 +94,7 @@ export class PuErComponent {
         },
         {
           title: 'Théier à grandes feuilles 大叶茶树',
-          src: '/assets/images/dayeChashu.jpg',
+          src: 'assets/images/dayeChashu.jpg',
         },
       ],
       content: `
@@ -111,11 +111,11 @@ export class PuErComponent {
       images: [
         {
           title: 'Thé en pot sur braises 罐茶',
-          src: '/assets/images/guancha.jpg',
+          src: 'assets/images/guancha.jpg',
         },
         {
           title: 'Feuilles en vrac 散茶叶',
-          src: '/assets/images/sanShengChaye.jpg',
+          src: 'assets/images/sanShengChaye.jpg',
         },
       ],
       content: `
@@ -131,11 +131,11 @@ export class PuErComponent {
       images: [
         {
           title: "Galettes de thé Pu'er cru vs cuit",
-          src: '/assets/images/11.jpg',
+          src: 'assets/images/11.jpg',
         },
         {
           title: "Infusion de thé Pu'er cru vs cuit",
-          src: '/assets/images/22.jpg',
+          src: 'assets/images/22.jpg',
         },
       ],
     },
@@ -145,11 +145,11 @@ export class PuErComponent {
       images: [
         {
           title: 'Fermentation en piles 渥堆发酵',
-          src: '/assets/images/wodui.jpg',
+          src: 'assets/images/wodui.jpg',
         },
         {
           title: 'Vieilles têtes de thé 老茶头',
-          src: '/assets/images/laoChaTou.jpg',
+          src: 'assets/images/laoChaTou.jpg',
         },
       ],
       content: `

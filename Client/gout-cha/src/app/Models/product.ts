@@ -2,11 +2,12 @@ export interface Product {
     IdProduct: number;
     Type: string;
     Name: string;
+    ChineseName: string;
     Description: string;
+    Link: string;
     Price: number;
     Color: string;
     Weight: number;
-    IdProvider: number;
     Origin: string;
 }
 

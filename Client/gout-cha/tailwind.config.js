@@ -1,9 +1,12 @@
+const { plugin } = require('postcss');
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
     "./src/**/*.{html,ts}"
   ],
-  theme: {      
+  theme: {
+    
     extend: {
       fontSize: {
         "cha": "10vw",
@@ -20,7 +23,7 @@ module.exports = {
         background: "#FCFAF6",
         navbar: "#727981",
         uiyellow: "rgb(232, 162, 33)"
-      }
+      },
     },
   },
   plugins: [],

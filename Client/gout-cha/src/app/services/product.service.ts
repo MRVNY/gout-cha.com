@@ -12,28 +12,15 @@ export class ProductService {
     return this.DbService.getQuery('product/getAllTea');
   }
 
-  addPhoto(idProduct: string, base64String: string) {
-    const data = { idProduct, image: base64String };
-    this.DbService.postQuery('admin/addPhoto', data).subscribe((data) => {
-      console.log(data);
-    });
+  addProduct(product: any): Observable<any> {
+    return this.DbService.postQuery('admin/addProduct', product);
   }
 
-  addProduct(product: any) {
-    this.DbService.postQuery('admin/addProduct', product).subscribe((data) => {
-      console.log(data);
-    });
+  updateProduct(product: any): Observable<any>{
+    return this.DbService.putQuery('admin/updateProduct', product);
   }
 
-  updateProduct(product: any) {
-    this.DbService.putQuery('admin/updateProduct', product).subscribe((data) => {
-      console.log(data);
-    });
-  }
-
-  deleteProduct(idProduct: string) {
-    this.DbService.deleteQuery(`admin/deleteProduct/${idProduct}`).subscribe((data) => {
-      console.log(data);
-    });
+  deleteProduct(idProduct: string) : Observable<any> {
+    return this.DbService.deleteQuery(`admin/deleteProduct?id=${idProduct}`);
   }
 }

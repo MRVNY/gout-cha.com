@@ -11,7 +11,7 @@ import { UserService } from '../../Services/user.service';
   standalone: true,
   imports: [CommonModule, RouterLink],
   template: `
-      <nav class="fixed top-0 w-full bg-navbar bg-opacity-95">
+      <nav class="fixed top-0 w-full backdrop-blur-md" style="background-color: rgba(114, 131, 154, 0.8);">
           <ul class="flex justify-between items-center text-lg px-5 py-3 text-white">
               <li><a routerLink="/home">
                 <img src='assets/images/LogoSansText.png' alt="Logo" class="h-10">
